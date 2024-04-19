@@ -199,7 +199,7 @@ export default function List() {
       {breadcrumb}
       <Card fullWidth>
         <CardHeader className="flex flex-row justify-between items-center flex-wrap gap-4">
-          <div className="text-xl font-bold ">Contact List</div>
+          <div role="contact-list" className="text-xl font-bold ">Contact List</div>
           <div className="flex flex-row gap-4 items-center">
             <Input
               type="text"

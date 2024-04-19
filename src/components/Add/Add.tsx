@@ -99,7 +99,7 @@ export default function Add() {
       {breadcrumb}
       <Card className="mx-auto">
         <CardHeader className="flex flex-row justify-center items-center flex-wrap">
-          <div className="text-xl font-bold ">Add New Contact</div>
+          <div role="add-contact" className="text-xl font-bold ">Add New Contact</div>
         </CardHeader>
         <CardBody className="space-y-4">
           <div className="flex flex-row space-x-4">
