@@ -13,7 +13,7 @@ import {
   Image,
   CardFooter,
 } from "@nextui-org/react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -21,6 +21,7 @@ import { toast } from "react-toastify";
 export default function Edit() {
   // hooks
   const router = useRouter();
+  const pathname = usePathname();
 
   // useRef
   const inputPhoto = useRef<HTMLInputElement | null>(null);
@@ -38,8 +39,7 @@ export default function Edit() {
   const [photo, setPhoto] = useState<string>("");
 
   // state
-  const path = window.location.pathname;
-  const id = path?.split("/")?.[2];
+  const id = pathname?.split("/")?.[2];
   const buttonDisable = useMemo(
     () => !firstName || !lastName || !age || !photo,
     [age, firstName, lastName, photo]

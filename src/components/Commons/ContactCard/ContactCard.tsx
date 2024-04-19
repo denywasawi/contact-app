@@ -1,13 +1,6 @@
 import { ContactType } from "@/types";
-import {
-  Avatar,
-  Button,
-  Card,
-  CardBody,
-  Divider,
-  Tooltip,
-} from "@nextui-org/react";
-import { FaTrash } from "react-icons/fa";
+import { Avatar, Card, CardBody, Divider, Tooltip } from "@nextui-org/react";
+import { FaEdit, FaTrash } from "react-icons/fa";
 
 interface Props {
   data: ContactType;
@@ -19,14 +12,7 @@ export default function ContactCard(props: Readonly<Props>) {
   const { data, onPress, onPressDelete, isDisabled } = props;
 
   return (
-    <Card
-      isHoverable
-      isPressable
-      isBlurred
-      isDisabled={isDisabled}
-      shadow="md"
-      onPress={() => onPress(data)}
-    >
+    <Card isHoverable isPressable isBlurred isDisabled={isDisabled} shadow="md">
       <CardBody className="flex flex-row justify-between items-center gap-4">
         <div className="flex flex-row items-center gap-2">
           <Avatar src={data.photo} size="lg" />
@@ -47,16 +33,24 @@ export default function ContactCard(props: Readonly<Props>) {
             <div className="text-lg text-center font-bold">{data.age}</div>
           </div>
           <Divider orientation="vertical" />
-          <Tooltip content="Delete">
-            <Button
-              isIconOnly
-              color="secondary"
-              size="sm"
-              onClick={() => onPressDelete(data)}
-            >
-              <FaTrash />
-            </Button>
-          </Tooltip>
+          <div className="flex flex-col gap-2">
+            <Tooltip content="Edit">
+              <div
+                className="p-2 flex justify-center items-center bg-primary rounded-lg"
+                onClick={() => onPress(data)}
+              >
+                <FaEdit size={10} />
+              </div>
+            </Tooltip>
+            <Tooltip content="Delete">
+              <div
+                className="p-2 flex justify-center items-center bg-danger rounded-lg"
+                onClick={() => onPressDelete(data)}
+              >
+                <FaTrash size={10} />
+              </div>
+            </Tooltip>
+          </div>
         </div>
       </CardBody>
     </Card>
